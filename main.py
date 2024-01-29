@@ -9,8 +9,11 @@ df["hora"] = ""
 def extraiHora(data):
     return data[11:13]
 
+
 def limpaData(data):
-    return data[:10]
+    # Data no formato "yyyy/mm/dd"
+    return f"{data[6:10]}/{data[3:5]}/{data[0:2]}"
+
 
 def extraiPeriodo(hora):
     if hora < 13:
@@ -25,8 +28,8 @@ df["data"] = df["data"].apply(limpaData)
 del df["hora"]
 df = df.drop_duplicates()
 
-salas_ignoradas = ["MAMO ASA SUL", "MAMO LAGO SUL", "DENS ASA SUL",
-                   "DENS LAGO SUL", "CONSULTORIO NUTRICAO", "RESSONANCIA MAGNETIC"]
+salas_ignoradas = ["DENS ASA SUL", "DENS LAGO SUL",
+                   "CONSULTORIO NUTRICAO", "RESSONANCIA MAGNETIC"]
 
 df = df.loc[~df["sala"].isin(salas_ignoradas)]
 df = df.sort_values(["data", "sala"])
