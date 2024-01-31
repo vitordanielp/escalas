@@ -34,15 +34,15 @@ salas_ignoradas = ["DENS ASA SUL", "DENS LAGO SUL",
 df = df.loc[~df["sala"].isin(salas_ignoradas)]
 df = df.sort_values(["data", "sala"])
 
-df_asa_sul = df.loc[df["unidade"] == "ASA SUL"]
-del df_asa_sul["unidade"]
+# df_asa_sul = df.loc[df["unidade"] == "ASA SUL"]
+# del df_asa_sul["unidade"]
 
-df_lago_sul = df.loc[df["unidade"] == "LAGO SUL"]
-del df_lago_sul["unidade"]
+# df_lago_sul = df.loc[df["unidade"] == "LAGO SUL"]
+# del df_lago_sul["unidade"]
 
-df.to_csv("escala.csv", sep=";", index=False)
-df_lago_sul.to_csv("escala_lago.csv", sep=";", index=False)
-df_asa_sul.to_csv("escala_asa.csv", sep=";", index=False)
+# df.to_csv("escala.csv", sep=";", index=False)
+# df_lago_sul.to_csv("escala_lago.csv", sep=";", index=False)
+# df_asa_sul.to_csv("escala_asa.csv", sep=";", index=False)
 df.to_json("escala.json", orient="records")
-df_lago_sul.to_json("escala_lago.json", orient="records")
-df_asa_sul.to_json("escala_asa.json", orient="records")
+# df_lago_sul.to_json("escala_lago.json", orient="records")
+# df_asa_sul.to_json("escala_asa.json", orient="records")
