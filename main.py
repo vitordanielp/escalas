@@ -11,15 +11,15 @@ def extraiHora(data):
 
 
 def limpaData(data):
-    # Data no formato "yyyy/mm/dd"
-    return f"{data[6:10]}/{data[3:5]}/{data[0:2]}"
+    # Data no formato "dd/mm/yyyy"
+    return f"{data[0:2]}/{data[3:5]}/{data[6:10]}"
 
 
 def extraiPeriodo(hora):
     if hora < 13:
-        return "Manhã"
+        return "manha"
     else:
-        return "Tarde"
+        return "tarde"
 
 
 df["hora"] = df["data"].apply(extraiHora).astype(int)
