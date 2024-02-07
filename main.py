@@ -1,7 +1,7 @@
 import pandas as pd
 
-columns = ["unidade", "sala", "medico", "data"]
-df = pd.read_csv("novo.csv", sep=";", header=None, names=columns)
+columns = ["data", "sala", "medico", "unidade"]
+df = pd.read_csv("escala.csv", sep=";", header=None, names=columns)
 df["periodo"] = ""
 df["hora"] = ""
 
