@@ -41,7 +41,7 @@ def separar_salas(dataFrame):
     unidade = dataFrame.unidade[0].lower().replace(" ", "-")
     with open(f"dados/{unidade}/salas.txt", "w") as file:
         for sala in sorted(salas_unidade):
-            file.writelines(sala + ";\n")
+            file.writelines(sala + ";")
     for sala in salas_unidade:
         new_df = dataFrame.loc[dataFrame["sala"] == sala]
         print(new_df)
