@@ -29,18 +29,21 @@ del df["hora"]
 df = df.drop_duplicates()
 df = df.sort_values(["data", "sala"])
 
-df_asa_sul = df.loc[df["unidade"] == "ASA SUL"]
-del df_asa_sul["unidade"]
 
 df_lago_sul = df.loc[df["unidade"] == "LAGO SUL"]
-del df_lago_sul["unidade"]
+df_asa_sul = df.loc[df["unidade"] == "ASA SUL"]
+df_lago_sul = df_lago_sul.reset_index(drop=True)
+df_asa_sul = df_asa_sul.reset_index(drop=True)
 
 
 def separar_salas(dataFrame):
     salas_unidade = dataFrame["sala"].unique()
+    unidade = dataFrame.unidade[0].lower().replace(" ", "-")
     for sala in salas_unidade:
-        dataFrame.loc[df["sala"] == sala].to_json(
-            f"dados/{sala}.json", orient="records")
+        new_df = dataFrame.loc[dataFrame["sala"] == sala]
+        print(new_df)
+        new_df.to_json(f"dados/{unidade}/{sala}.json",
+                       index=False, orient="records")
 
 
 separar_salas(df_lago_sul)
