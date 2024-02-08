@@ -39,11 +39,14 @@ df_asa_sul = df_asa_sul.reset_index(drop=True)
 def separar_salas(dataFrame):
     salas_unidade = dataFrame["sala"].unique()
     unidade = dataFrame.unidade[0].lower().replace(" ", "-")
-    for sala in salas_unidade:
-        new_df = dataFrame.loc[dataFrame["sala"] == sala]
-        print(new_df)
-        new_df.to_json(f"dados/{unidade}/{sala}.json",
-                       index=False, orient="records")
+    with open(f"dados/{unidade}/salas.txt", "w") as file:
+        for sala in sorted(salas_unidade):
+            file.writelines(sala + ";\n")
+    # for sala in salas_unidade:
+        # new_df = dataFrame.loc[dataFrame["sala"] == sala]
+        # print(new_df)
+        # new_df.to_json(f"dados/{unidade}/{sala}.json",
+                    #    index=False, orient="records")
 
 
 separar_salas(df_lago_sul)
