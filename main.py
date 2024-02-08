@@ -42,11 +42,11 @@ def separar_salas(dataFrame):
     with open(f"dados/{unidade}/salas.txt", "w") as file:
         for sala in sorted(salas_unidade):
             file.writelines(sala + ";\n")
-    # for sala in salas_unidade:
-        # new_df = dataFrame.loc[dataFrame["sala"] == sala]
-        # print(new_df)
-        # new_df.to_json(f"dados/{unidade}/{sala}.json",
-                    #    index=False, orient="records")
+    for sala in salas_unidade:
+        new_df = dataFrame.loc[dataFrame["sala"] == sala]
+        print(new_df)
+        new_df.to_json(f"dados/{unidade}/{sala}.json",
+                       index=False, orient="records")
 
 
 separar_salas(df_lago_sul)
