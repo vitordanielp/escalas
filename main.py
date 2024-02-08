@@ -17,9 +17,9 @@ def limpaData(data):
 
 def extraiPeriodo(hora):
     if hora < 13:
-        return "manha"
+        return "MANHA"
     else:
-        return "tarde"
+        return "TARDE"
 
 
 df["hora"] = df["data"].apply(extraiHora).astype(int)
@@ -27,11 +27,6 @@ df["periodo"] = df["hora"].apply(extraiPeriodo)
 df["data"] = df["data"].apply(limpaData)
 del df["hora"]
 df = df.drop_duplicates()
-
-salas_ignoradas = ["DENS ASA SUL", "DENS LAGO SUL",
-                   "CONSULTORIO NUTRICAO", "RESSONANCIA MAGNETIC"]
-
-df = df.loc[~df["sala"].isin(salas_ignoradas)]
 df = df.sort_values(["data", "sala"])
 
 df_asa_sul = df.loc[df["unidade"] == "ASA SUL"]
@@ -40,6 +35,13 @@ del df_asa_sul["unidade"]
 df_lago_sul = df.loc[df["unidade"] == "LAGO SUL"]
 del df_lago_sul["unidade"]
 
-df.to_json("escala.json", orient="records")
-df_lago_sul.to_json("escala_lago.json", orient="records")
-df_asa_sul.to_json("escala_asa.json", orient="records")
+
+def separar_salas(dataFrame):
+    salas_unidade = dataFrame["sala"].unique()
+    for sala in salas_unidade:
+        dataFrame.loc[df["sala"] == sala].to_json(
+            f"dados/{sala}.json", orient="records")
+
+
+separar_salas(df_lago_sul)
+separar_salas(df_asa_sul)
