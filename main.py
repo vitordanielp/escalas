@@ -44,7 +44,6 @@ def separar_salas(dataFrame):
             file.writelines(sala + ";")
     for sala in salas_unidade:
         new_df = dataFrame.loc[dataFrame["sala"] == sala]
-        print(new_df)
         new_df.to_json(f"dados/{unidade}/{sala}.json",
                        index=False, orient="records")
 
