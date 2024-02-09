@@ -7,7 +7,7 @@ df["hora"] = ""
 
 
 def extraiHora(data):
-    return data[11:13]
+    return data[11:16].replace(":", ".")
 
 
 def limpaData(data):
@@ -16,13 +16,13 @@ def limpaData(data):
 
 
 def extraiPeriodo(hora):
-    if hora < 13:
+    if hora < 13.25:
         return "MANHA"
     else:
         return "TARDE"
 
 
-df["hora"] = df["data"].apply(extraiHora).astype(int)
+df["hora"] = df["data"].apply(extraiHora).astype(float)
 df["periodo"] = df["hora"].apply(extraiPeriodo)
 df["data"] = df["data"].apply(limpaData)
 del df["hora"]
