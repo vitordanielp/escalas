@@ -9,22 +9,18 @@ def execEscalas():
     df["periodo"] = ""
     df["hora"] = ""
 
-
     def extraiHora(data):
         return data[11:16].replace(":", ".")
-
 
     def limpaData(data):
         # Data no formato "dd/mm/yyyy"
         return f"{data[0:2]}/{data[3:5]}/{data[6:10]}"
-
 
     def extraiPeriodo(hora):
         if hora < 13.25:
             return "MANHA"
         else:
             return "TARDE"
-
 
     df["hora"] = df["data"].apply(extraiHora).astype(float)
     df["periodo"] = df["hora"].apply(extraiPeriodo)
@@ -33,12 +29,10 @@ def execEscalas():
     df = df.drop_duplicates()
     df = df.sort_values(["data", "sala"])
 
-
     df_lago_sul = df.loc[df["unidade"] == "LAGO SUL"]
     df_asa_sul = df.loc[df["unidade"] == "ASA SUL"]
     df_lago_sul = df_lago_sul.reset_index(drop=True)
     df_asa_sul = df_asa_sul.reset_index(drop=True)
-
 
     def separar_salas(dataFrame):
         salas_unidade = dataFrame["sala"].unique()
@@ -49,7 +43,7 @@ def execEscalas():
         for sala in salas_unidade:
             new_df = dataFrame.loc[dataFrame["sala"] == sala]
             new_df.to_json(f"dados/{unidade}/{sala}.json",
-                        index=False, orient="records")
+                           index=False, orient="records")
 
     separar_salas(df_lago_sul)
     separar_salas(df_asa_sul)
@@ -60,8 +54,16 @@ def execEscalas():
 ################### PACOTES DE EXAMES ###################
 
 def execPacotes():
-    df = pd.read_csv("pacotes.csv", sep=";", header=None)
+    columns = ["nome", "mamografia", "ampliacao", "densi", "us mamas"]
+    df = pd.read_csv("pacotes.csv", sep=";", names=columns)
     df = df.fillna(value="-")
+    
+    for col in df.columns:
+        df[col] = df[col].apply(lambda x: x.lower())
+    
+    df.nome = df.nome.apply(lambda x: x.replace("saude", "saúde").replace("policia", "polícia"))
+    df.ampliacao = df.ampliacao.apply(lambda x: x.lower().replace("ampliacao", "ampliação"))
+
     df.to_json("dados/pacotes/pacotes.json", index=False, orient="records")
 
 
