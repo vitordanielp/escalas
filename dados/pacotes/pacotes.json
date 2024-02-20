@@ -1,0 +1,184 @@
+[
+    {
+        "0": "AFFEGO",
+        "1": "MAMOGRAFIA",
+        "2": "AMPLIACAO",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "AMIL",
+        "1": "MAMOGRAFIA",
+        "2": "-",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "ASSEFAZ",
+        "1": "MAMOGRAFIA",
+        "2": "-",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "BRB",
+        "1": "MAMOGRAFIA",
+        "2": "-",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "CAESAN",
+        "1": "MAMOGRAFIA",
+        "2": "AMPLIACAO",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "CAPESESP",
+        "1": "MAMOGRAFIA",
+        "2": "-",
+        "3": "DENSITOMETRIA",
+        "4": "US MAMAS"
+    },
+    {
+        "0": "CASEMBRAPA",
+        "1": "MAMOGRAFIA",
+        "2": "AMPLIACAO",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "CASSI",
+        "1": "MAMOGRAFIA",
+        "2": "AMPLIACAO",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "FASCAL",
+        "1": "MAMOGRAFIA",
+        "2": "AMPLIACAO",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "CASEC",
+        "1": "MAMOGRAFIA",
+        "2": "AMPLIACAO",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "GEAP",
+        "1": "MAMOGRAFIA",
+        "2": "AMPLIACAO",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "GDF",
+        "1": "MAMOGRAFIA",
+        "2": "AMPLIACAO",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "INFRAERO",
+        "1": "MAMOGRAFIA",
+        "2": "AMPLIACAO",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "MPU",
+        "1": "MAMOGRAFIA",
+        "2": "-",
+        "3": "DENSITOMETRIA",
+        "4": "US MAMAS"
+    },
+    {
+        "0": "POLICIA FEDERAL",
+        "1": "MAMOGRAFIA",
+        "2": "-",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "POSTAL SAUDE",
+        "1": "MAMOGRAFIA",
+        "2": "AMPLIACAO",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "PROASA",
+        "1": "MAMOGRAFIA",
+        "2": "-",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "SERPRO",
+        "1": "MAMOGRAFIA",
+        "2": "-",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "SIS SENADO",
+        "1": "MAMOGRAFIA",
+        "2": "AMPLIACAO",
+        "3": "DENSITOMETRIA",
+        "4": "US MAMAS"
+    },
+    {
+        "0": "STF",
+        "1": "MAMOGRAFIA",
+        "2": "-",
+        "3": "DENSITOMETRIA",
+        "4": "-"
+    },
+    {
+        "0": "STJ",
+        "1": "MAMOGRAFIA",
+        "2": "-",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "STM",
+        "1": "MAMOGRAFIA",
+        "2": "-",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "TJDFT",
+        "1": "MAMOGRAFIA",
+        "2": "AMPLIACAO",
+        "3": "-",
+        "4": "US MAMAS"
+    },
+    {
+        "0": "TRE",
+        "1": "MAMOGRAFIA",
+        "2": "-",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "TRF",
+        "1": "MAMOGRAFIA",
+        "2": "-",
+        "3": "-",
+        "4": "-"
+    },
+    {
+        "0": "TST",
+        "1": "MAMOGRAFIA",
+        "2": "-",
+        "3": "-",
+        "4": "-"
+    }
+]
