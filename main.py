@@ -60,8 +60,11 @@ def execPacotes():
     
     for col in df.columns:
         df[col] = df[col].apply(lambda x: x.lower())
+        
+    def corrigeEscrita(str):
+        return str.replace("saude", "saúde").replace("policia", "polícia").replace("camara", "câmara")
     
-    df.nome = df.nome.apply(lambda x: x.replace("saude", "saúde").replace("policia", "polícia"))
+    df.nome = df.nome.apply(corrigeEscrita)
     df.ampliacao = df.ampliacao.apply(lambda x: x.lower().replace("ampliacao", "ampliação"))
 
     df.to_json("dados/pacotes/pacotes.json", index=False, orient="records")
