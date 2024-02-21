@@ -54,7 +54,7 @@ def execEscalas():
 ################### PACOTES DE EXAMES ###################
 
 def execPacotes():
-    columns = ["nome", "mamografia", "ampliacao", "densi", "us mamas"]
+    columns = ["nome", "mamografia", "ampliacao", "us mamas"]
     df = pd.read_csv("pacotes.csv", sep=";", names=columns)
     df = df.fillna(value="-")
     
