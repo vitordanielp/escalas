@@ -4,7 +4,7 @@ import pandas as pd
 ################### ESCALAS ###################
 
 def execEscalas():
-    columns = ["data", "sala", "medico", "unidade"]
+    columns = ["data", "sala", "medico", "status", "unidade"]
     df = pd.read_csv("escala.csv", sep=";", header=None, names=columns)
     df["periodo"] = ""
     df["hora"] = ""
@@ -28,6 +28,8 @@ def execEscalas():
     del df["hora"]
     df = df.drop_duplicates()
     df = df.sort_values(["data", "sala"])
+    df = df[~df["status"].isin(["C", "B"])]
+    del df["status"]
 
     df_lago_sul = df.loc[df["unidade"] == "LAGO SUL"]
     df_asa_sul = df.loc[df["unidade"] == "ASA SUL"]
@@ -36,6 +38,7 @@ def execEscalas():
 
     def separar_salas(dataFrame):
         salas_unidade = dataFrame["sala"].unique()
+        salas_unidade = [sala for sala in salas_unidade if not sala.startswith("DENS") and not sala.startswith("RESS")]
         unidade = dataFrame.unidade[0].lower().replace(" ", "-")
         with open(f"dados/{unidade}/salas.txt", "w") as file:
             for sala in sorted(salas_unidade):
@@ -57,15 +60,16 @@ def execPacotes():
     columns = ["nome", "mamografia", "ampliacao", "us mamas"]
     df = pd.read_csv("pacotes.csv", sep=";", names=columns)
     df = df.fillna(value="-")
-    
+
     for col in df.columns:
         df[col] = df[col].apply(lambda x: x.lower())
-        
+
     def corrigeEscrita(str):
         return str.replace("saude", "saúde").replace("policia", "polícia").replace("camara", "câmara")
-    
+
     df.nome = df.nome.apply(corrigeEscrita)
-    df.ampliacao = df.ampliacao.apply(lambda x: x.lower().replace("ampliacao", "ampliação"))
+    df.ampliacao = df.ampliacao.apply(
+        lambda x: x.lower().replace("ampliacao", "ampliação"))
 
     df.to_json("dados/pacotes/pacotes.json", index=False, orient="records")
 
