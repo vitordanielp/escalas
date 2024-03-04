@@ -28,7 +28,7 @@ def execEscalas():
     del df["hora"]
     df = df.drop_duplicates()
     df = df.sort_values(["data", "sala"])
-    df = df[~df["status"].isin(["C", "B"])]
+    df = df[~df["status"].isin(["C", "B", "R"])]
     del df["status"]
 
     df_lago_sul = df.loc[df["unidade"] == "LAGO SUL"]
